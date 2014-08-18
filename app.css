@@ -1,0 +1,9 @@
+*{
+font-family: ff-tisa-web-pro-1, ff-tisa-web-pro-2, 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, 'Microsoft JhengHei', 'Hiragino Sans GB', 'Hiragino Sans GB W3', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif !important;
+}
+input {
+	margin:5px 5px 5px 5px !important;
+}
+.btn{
+	margin:5px 5px 5px 5px !important;
+}

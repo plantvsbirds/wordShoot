@@ -1,0 +1,104 @@
+<head>
+<script src="http://cdn.bootcss.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link href="http://cdn.bootcss.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+
+	</style>
+	<meta name="viewport" content="width=device-width">
+	<title>Word shooooot</title>
+	<script>
+		$(document).ready(function(){
+
+		})
+	</script>
+</head>
+
+<body>
+	{{> wordsframe}}
+</body>
+
+<template name="add">
+	<div class="panel panel-info" id="add" style="margin-top:10px;">
+		<div class="panel-heading">
+		Add new word
+		</div>
+	<div class="panel-body">
+<div class="form-inline" role="form">
+	<input name="l" class="form-control input-md" placeholder="this word has meaning of..">
+	<input name="r" class="form-control input-md" placeholder="..that!!">
+	<button class="btn btn-default pull-right">Add!!</button>
+</div>
+
+
+
+
+	
+	
+	</div>
+	<div class="panel-footer">
+	<p>This app with ugly code was written by henry, all codes are in the public domain. Good luck, henry! Have fun with words.</p>
+	</div>
+	</div>
+
+</template>
+
+<template name="wordsframe">
+	<div class="row">
+	<div class="col-lg-2"><p>&nbsp;</p></div>
+	<div class="col-lg-8">
+	
+	{{> add}}
+	<div class="panel panel-info">
+	{{> config}}
+	
+
+	<table class="table table-striped table-bordered">
+		<tbody>
+		{{#each words}}
+			{{> aword}}
+		{{/each}}
+		</tbody>
+	
+	</table>
+
+	</div>
+
+	</div>
+	<div class="col-lg-2"><p>&nbsp;</p></div>
+	<div class="col-lg-12"><p>&nbsp;</p></div>
+	<div class="col-lg-2"><p>&nbsp;</p></div>
+	<div class="col-lg-8">
+	<div class="btn btn-default btn-success" style="margin-bottom:20px; width:100%;">Have a coffee &lt;Smooch&gt;(
+	{{# if viewtimes}} 
+	{{viewtimes}}
+	{{else}}
+	0
+	{{/if}}
+	)</div></div>
+	<div class="col-lg-2"><p>&nbsp;</p></div>
+	</div>
+</template>
+	<template name="config">
+		<div class="panel-heading">
+		Barron word list: 
+
+		<button class="btn btn-default btn btn-default-small" data-id="bar1">1-7</button>
+		<button class="btn btn-default btn btn-default-small" data-id="bar2">8-14</button>
+		<button class="btn btn-default btn btn-default-small" data-id="bar3">15-21</button>
+		<button class="btn btn-default btn btn-default-small" data-id="bar4">22-28</button>
+		<button class="btn btn-default btn btn-default-small" data-id="bar5">29-35</button>
+		<button class="btn btn-default btn btn-default-small" data-id="bar6">36-42</button>
+		<button class="btn btn-default btn btn-default-small" data-id="bar7">43-50</button>
+		
+		</div>
+	</template>
+<template name="aword">
+	<tr data-name="{{left}}&{{right}}row" data-sim="{{right}}" style="">
+		<td data-name="{{left}}&{{right}}showl" class="left"><h3>{{left}}</h3></td>
+		<td data-name="{{left}}&{{right}}showr"  class="right">
+			<div class="pull-right">
+			<button data-name="{{left}}&{{right}}forget" class="pull-right btn btn-warning nobtn">Forget ({{forgettime}})</button>
+			<button data-name="{{left}}&{{right}}know"   class="pull-right btn btn-success yesbtn">Know ({{# if gottime}}{{gottime}}{{else}}0{{/if}})</button></div>
+		<a data-name="{{left}}&{{right}}show" class="btn btn-default pull-right" onclick="alert($($(this).parents('tr')[0]).attr('data-sim'))" style="margin-left:10px;margin:right:10px;">Show!!</a></td>
+	</tr>
+</template>
